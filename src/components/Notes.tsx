@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as uuid from 'uuid';
+import uuid from 'uuid';
+import React from 'react';
 
 interface Note {
   id: string;
