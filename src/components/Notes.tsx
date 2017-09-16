@@ -16,9 +16,6 @@ const notes: Note[] = [
   }
 ];
 
-class Notes extends React.Component {
-  render() {
-    return <ul>{notes.map(note => <li key={note.id}>{note.task}</li>)}</ul>;
-  }
-}
-export default Notes;
+export default () => (
+  <ul>{notes.map(note => <li key={note.id}>{note.task}</li>)}</ul>
+);

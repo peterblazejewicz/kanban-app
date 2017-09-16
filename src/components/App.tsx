@@ -2,11 +2,10 @@ import React from 'react';
 import './App.css';
 
 import Notes from './Notes';
-
-class App extends React.Component {
-  render() {
-    return <Notes />;
-  }
-}
-
-export default App;
+/* tslint:disable:no-console */
+export default () => (
+  <div>
+    <button onClick={() => console.log('add note')}>+</button>
+    <Notes />
+  </div>
+);
