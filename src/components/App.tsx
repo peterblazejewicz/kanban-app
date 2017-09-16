@@ -36,12 +36,20 @@ class App extends React.Component<any, any> {
     });
   }
 
+  @autobind
+  deleteNote(id: string, event: Event) {
+    event.stopPropagation();
+    this.setState({
+      notes: this.state.notes.filter((note: NoteModel) => note.id !== id)
+    });
+  }
+
   render() {
-    const { notes } = this.state;
+    const { notes }: { notes: NoteModel[] } = this.state;
     return (
       <div>
         <button onClick={this.addNote}>+</button>
-        <Notes notes={notes} />
+        <Notes notes={notes} onDelete={this.deleteNote} />
       </div>
     );
   }
