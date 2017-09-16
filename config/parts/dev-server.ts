@@ -1,7 +1,7 @@
-import * as webpack from 'webpack';
+import { Configuration, HotModuleReplacementPlugin } from 'webpack';
 import * as wds from 'webpack-dev-server';
 
-const devServer = (options: any) => {
+const devServer: (options: any) => Configuration = options => {
   const config: wds.Configuration = {
     // Enable history API fallback so HTML5 History API based
     // routing works. This is a good default that will come
@@ -25,12 +25,12 @@ const devServer = (options: any) => {
     host: options.host, // Defaults to `localhost`
     port: options.port, // Defaults to 8080
   };
-  const ret: webpack.Configuration = {
+  const ret: Configuration = {
     devServer: config,
     plugins: [
       // Enable multi-pass compilation for enhanced performance
       // in larger projects. Good default.
-      new webpack.HotModuleReplacementPlugin({
+      new HotModuleReplacementPlugin({
         multiStep: true,
       }),
     ],

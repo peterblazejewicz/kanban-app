@@ -1,6 +1,7 @@
+import { Configuration } from 'webpack';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const indexTemplate = (options: any) => ({
+const indexTemplate: (options: any) => Configuration = options => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: require('html-webpack-template'),

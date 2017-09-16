@@ -1,6 +1,6 @@
-import * as webpack from 'webpack';
+import { Configuration, optimize } from 'webpack';
 
-const extractBundle: (options: any) => webpack.Configuration = options => {
+const extractBundle: (options: any) => Configuration = options => {
   const entry: { [id: string]: any } = {};
   entry[options.name] = options.entries;
   return {
@@ -9,7 +9,7 @@ const extractBundle: (options: any) => webpack.Configuration = options => {
     plugins: [
       // Extract bundle and manifest files. Manifest is
       // needed for reliable caching.
-      new webpack.optimize.CommonsChunkPlugin({
+      new optimize.CommonsChunkPlugin({
         names: [options.name, 'manifest'],
 
         // options.name modules only

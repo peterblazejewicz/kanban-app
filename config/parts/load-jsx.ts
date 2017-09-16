@@ -1,4 +1,7 @@
-const loadJSX = (include: any) => ({
+import { Condition, Configuration } from 'webpack';
+const loadJSX: (
+  include: Condition | Condition[],
+) => Configuration = include => ({
   module: {
     loaders: [
       {

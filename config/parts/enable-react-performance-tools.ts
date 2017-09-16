@@ -1,8 +1,11 @@
-const enableReactPerformanceTools = () => ({
+import { Configuration } from 'webpack';
+const resolve = require.resolve;
+
+const enableReactPerformanceTools: () => Configuration = () => ({
   module: {
     loaders: [
       {
-        test: require.resolve('react'),
+        test: resolve('react'),
         loader: 'expose?React',
       },
     ],

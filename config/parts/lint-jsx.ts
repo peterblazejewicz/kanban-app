@@ -1,10 +1,14 @@
-const lintJSX = (include: any) => ({
+import { Configuration, Condition } from 'webpack';
+const lintJSX: (
+  include: Condition | Condition[],
+) => Configuration = include => ({
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         loaders: ['eslint'],
         include: include,
+        enforce: 'pre',
       },
     ],
   },

@@ -1,8 +1,8 @@
-import * as webpack from 'webpack';
+import { Configuration, optimize } from 'webpack';
 
-const minify = () => ({
+const minify: () => Configuration = () => ({
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
+    new optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
       },

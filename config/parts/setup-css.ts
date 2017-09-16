@@ -1,4 +1,6 @@
-const setupCSS = (paths: any) => ({
+import { Configuration, Condition } from 'webpack';
+
+const setupCSS: (paths: Condition | Condition[]) => Configuration = paths => ({
   module: {
     loaders: [
       {

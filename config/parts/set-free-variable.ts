@@ -1,11 +1,14 @@
-import * as webpack from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 
-const setFreeVariable = (key: string, value: any) => {
+const setFreeVariable: (key: string, value: string) => Configuration = (
+  key,
+  value,
+) => {
   const env: { [id: string]: string } = {};
   env[key] = JSON.stringify(value);
 
   return {
-    plugins: [new webpack.DefinePlugin(env)],
+    plugins: [new DefinePlugin(env)],
   };
 };
 

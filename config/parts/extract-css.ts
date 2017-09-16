@@ -1,6 +1,6 @@
-import * as webpack from 'webpack';
+import { Configuration } from 'webpack';
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
-const extractCSS: (paths: any[]) => webpack.Configuration = paths => ({
+const extractCSS: (paths: any[]) => Configuration = paths => ({
   module: {
     loaders: [
       // Extract CSS during build

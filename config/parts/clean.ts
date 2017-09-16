@@ -1,6 +1,6 @@
-import * as webpack from 'webpack';
+import { Configuration } from 'webpack';
 import * as CleanWebpackPlugin from 'clean-webpack-plugin';
-const clean: (path: string) => webpack.Configuration = path => ({
+const clean: (path: string) => Configuration = path => ({
   plugins: [
     new CleanWebpackPlugin([path], {
       root: process.cwd(),

@@ -1,7 +1,11 @@
-const loadIsparta = (include: any) => ({
+import { Configuration, Condition } from 'webpack';
+const loadIsparta: (
+  include: Condition | Condition[],
+) => Configuration = include => ({
   module: {
-    preLoaders: [
+    loaders: [
       {
+        enforce: 'pre',
         test: /\.(js|jsx)$/,
         loaders: ['isparta'],
         include: include,
