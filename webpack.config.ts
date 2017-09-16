@@ -1,6 +1,8 @@
 import * as path from 'path';
 import * as merge from 'webpack-merge';
-const validate = require('webpack-validator');
+// this one is outdated and fails to validate
+// configuration for webpack 2/3 (pre/post)
+// const validate = require('webpack-validator');
 
 import * as parts from './config/webpack.parts';
 
@@ -104,7 +106,4 @@ switch (TARGET) {
       parts.npmInstall(),
     );
 }
-
-module.exports = validate(config, {
-  quiet: true,
-});
+export default config;
