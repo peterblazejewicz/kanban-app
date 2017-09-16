@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 
-import Notes from './components/Notes';
+import Notes from './Notes';
 
 class App extends React.Component {
   render() {
