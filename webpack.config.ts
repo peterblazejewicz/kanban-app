@@ -5,6 +5,7 @@ import * as merge from 'webpack-merge';
 // const validate = require('webpack-validator');
 
 import * as parts from './config/webpack.parts';
+import { Configuration } from 'webpack';
 
 const TARGET = process.env.npm_lifecycle_event;
 const ENABLE_POLLING = process.env.ENABLE_POLLING;
@@ -17,7 +18,7 @@ const PATHS = {
 
 process.env.BABEL_ENV = TARGET;
 
-const common = merge(
+const common: Configuration = merge(
   {
     // Entry accepts a path or an object of entries.
     // We'll be using the latter form given it's
@@ -32,7 +33,7 @@ const common = merge(
     resolve: {
       extensions: ['', '.js', '.jsx'],
     },
-  },
+  } as Configuration,
   parts.indexTemplate({
     title: 'Kanban demo',
     appMountId: 'app',
@@ -41,7 +42,7 @@ const common = merge(
   parts.lintJSX(PATHS.app),
 );
 
-var config;
+let config: Configuration;
 
 // Detect how npm is run and branch based on that
 switch (TARGET) {
@@ -64,7 +65,7 @@ switch (TARGET) {
           filename: '[name].[chunkhash].js',
           chunkFilename: '[chunkhash].js',
         },
-      },
+      } as Configuration,
       parts.clean(PATHS.build),
       parts.setFreeVariable('process.env.NODE_ENV', 'production'),
       parts.extractBundle({
@@ -81,7 +82,7 @@ switch (TARGET) {
       common,
       {
         devtool: 'inline-source-map',
-      },
+      } as Configuration,
       parts.loadIsparta(PATHS.app),
       parts.loadJSX(PATHS.test),
     );
@@ -94,7 +95,7 @@ switch (TARGET) {
         entry: {
           style: PATHS.style,
         },
-      },
+      } as Configuration,
       parts.setupCSS(PATHS.style),
       parts.devServer({
         // Customize host/port here if needed
