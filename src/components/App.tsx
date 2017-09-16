@@ -2,6 +2,7 @@ import './App.css';
 import Notes from './Notes';
 import React from 'react';
 import uuid from 'uuid';
+import autobind from 'autobind-decorator';
 
 // tslint:disable-next-line:no-any
 class App extends React.Component<any, any> {
@@ -20,8 +21,9 @@ class App extends React.Component<any, any> {
         }
       ] as Note[]
     };
-    this.addNote = this.addNote.bind(this);
   }
+
+  @autobind
   addNote() {
     this.setState({
       notes: [
