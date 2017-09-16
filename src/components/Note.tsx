@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({
+const Note = ({
   task,
   onDelete = () => undefined
 }: {
@@ -12,3 +12,4 @@ export default ({
     <button onClick={onDelete}>x</button>
   </div>
 );
+export default Note;

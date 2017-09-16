@@ -1,7 +1,7 @@
 import React from 'react';
 import Note from './Note';
 
-export default ({
+const Notes = ({
   notes,
   onDelete = () => undefined
 }: {
@@ -16,3 +16,4 @@ export default ({
     ))}
   </ul>
 );
+export default Notes;
