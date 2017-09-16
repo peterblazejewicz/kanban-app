@@ -1,21 +1,15 @@
-import uuid from 'uuid';
+import './Note.ts';
 import React from 'react';
 
-interface Note {
-  id: string;
-  task: string;
-}
-const notes: Note[] = [
-  {
-    id: uuid.v4(),
-    task: 'Learn React'
-  },
-  {
-    id: uuid.v4(),
-    task: 'Do laundry'
+// tslint:disable-next-line:variable-name
+class Notes extends React.Component<{ notes: Note[] }> {
+  render() {
+    return (
+      <ul>
+        {this.props.notes.map(note => <li key={note.id}>{note.task}</li>)}
+      </ul>
+    );
   }
-];
+}
 
-export default () => (
-  <ul>{notes.map(note => <li key={note.id}>{note.task}</li>)}</ul>
-);
+export default Notes;
