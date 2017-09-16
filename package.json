@@ -2,7 +2,8 @@
   "name": "react-boilerplate",
   "private": true,
   "version": "2.5.6",
-  "description": "Boilerplate for [SurviveJS - React](http://survivejs.com/react/introduction/)",
+  "description":
+    "Boilerplate for [SurviveJS - React](http://survivejs.com/react/introduction/)",
   "scripts": {
     "stats": "webpack --profile --json > stats.json",
     "start": "webpack-dev-server",
@@ -10,13 +11,15 @@
     "build": "webpack",
     "test": "karma start",
     "test:tdd": "npm run test -- --auto-watch --no-single-run",
-    "test:lint": "eslint ./app ./tests --ext .js --ext .jsx --ignore-path .gitignore --ignore-pattern dist --cache"
+    "test:lint":
+      "eslint ./app ./tests --ext .js --ext .jsx --ignore-path .gitignore --ignore-pattern dist --cache"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@types/extract-text-webpack-plugin": "^2.1.0",
+    "@types/mocha": "^2.2.43",
     "@types/node": "^8.0.28",
     "@types/react": "^16.0.5",
     "@types/react-addons-perf": "^0.14.18",
