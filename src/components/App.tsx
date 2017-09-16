@@ -19,7 +19,7 @@ class App extends React.Component<any, any> {
           id: uuid.v4(),
           task: 'Do laundry'
         }
-      ] as Note[]
+      ] as NoteModel[]
     };
   }
 
@@ -31,7 +31,7 @@ class App extends React.Component<any, any> {
         {
           id: uuid.v4(),
           task: 'New Task'
-        } as Note
+        } as NoteModel
       ]
     });
   }

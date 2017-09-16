@@ -1,4 +1,4 @@
-interface Note {
+interface NoteModel {
   id: string;
   task: string;
 }
