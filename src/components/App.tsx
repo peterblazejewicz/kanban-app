@@ -9,20 +9,18 @@ interface AppState {
 }
 
 class App extends React.Component<{}, AppState> {
-  componentWillMount() {
-    this.state = {
-      notes: [
-        {
-          id: uuid.v4(),
-          task: 'Learn React',
-        },
-        {
-          id: uuid.v4(),
-          task: 'Do laundry',
-        },
-      ],
-    };
-  }
+  state = {
+    notes: [
+      {
+        id: uuid.v4(),
+        task: 'Learn React',
+      },
+      {
+        id: uuid.v4(),
+        task: 'Do laundry',
+      },
+    ],
+  };
 
   @autobind
   addNote() {
