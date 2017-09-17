@@ -12,10 +12,12 @@ class App extends React.Component<{}, AppState> {
   state = {
     notes: [
       {
+        editing: false,
         id: uuid.v4(),
         task: 'Learn React',
       },
       {
+        editing: false,
         id: uuid.v4(),
         task: 'Do laundry',
       },
@@ -23,11 +25,24 @@ class App extends React.Component<{}, AppState> {
   };
 
   @autobind
+  activateNoteEdit(id: string, event: Event) {
+    this.setState({
+      notes: this.state.notes.map(note => {
+        if (note.id === id) {
+          note.editing = true;
+        }
+        return note;
+      }),
+    });
+  }
+
+  @autobind
   addNote() {
     this.setState({
       notes: [
         ...this.state.notes,
         {
+          editing: false,
           id: uuid.v4(),
           task: 'New Task',
         },
@@ -43,12 +58,30 @@ class App extends React.Component<{}, AppState> {
     });
   }
 
+  @autobind
+  editNote(id: string, task: string, event: Event) {
+    this.setState({
+      notes: this.state.notes.map(note => {
+        if (note.id === id) {
+          note.editing = false;
+          note.task = task;
+        }
+        return note;
+      }),
+    });
+  }
+
   render() {
     const { notes } = this.state;
     return (
       <div>
         <button onClick={this.addNote}>+</button>
-        <Notes notes={notes} onDelete={this.deleteNote} />
+        <Notes
+          notes={notes}
+          onDelete={this.deleteNote}
+          onNoteClick={this.activateNoteEdit}
+          onEdit={this.editNote}
+        />
       </div>
     );
   }

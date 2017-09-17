@@ -1,6 +1,15 @@
 import React from 'react';
 
-const Note: React.SFC = ({ children, ...props }) => (
+interface NoteInterface {
+  /**
+   * Need to add this to comply with React JSX
+   * @type {React.EventHandler<React.MouseEvent<HTMLElement>>}
+   * @memberof NoteInterface
+   */
+  onClick?: React.EventHandler<React.MouseEvent<HTMLElement>>;
+}
+
+const Note: React.SFC<NoteInterface> = ({ children, ...props }) => (
   <div {...props}>{children}</div>
 );
 
