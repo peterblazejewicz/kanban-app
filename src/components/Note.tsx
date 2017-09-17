@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Note = ({
-  task,
-  onDelete = () => undefined
-}: {
+interface NoteInterface {
   task: string;
-  onDelete: () => void;
+  onDelete: () => {};
+}
+
+const Note: React.SFC<NoteInterface> = ({
+  task,
+  onDelete = () => undefined,
 }) => (
   <div>
     <span>{task}</span>
     <button onClick={onDelete}>x</button>
   </div>
 );
+
 export default Note;

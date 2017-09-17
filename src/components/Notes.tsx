@@ -1,12 +1,14 @@
-import React from 'react';
 import Note from './Note';
+import React from 'react';
 
-const Notes = ({
-  notes,
-  onDelete = () => undefined
-}: {
+interface NotesInterface {
   notes: NoteModel[];
   onDelete: (id: string, event: Event) => void;
+}
+
+const Notes: React.SFC<NotesInterface> = ({
+  notes,
+  onDelete = () => undefined,
 }) => (
   <ul>
     {notes.map(({ id, task }) => (

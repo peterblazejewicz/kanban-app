@@ -1,25 +1,26 @@
 import './App.css';
+import autobind from 'autobind-decorator';
 import Notes from './Notes';
 import React from 'react';
 import uuid from 'uuid';
-import autobind from 'autobind-decorator';
 
-// tslint:disable-next-line:no-any
-class App extends React.Component<any, any> {
-  // tslint:disable-next-line:no-any
-  constructor(props: any) {
-    super(props);
+interface AppState {
+  notes: NoteModel[];
+}
+
+class App extends React.Component<{}, AppState> {
+  componentWillMount() {
     this.state = {
       notes: [
         {
           id: uuid.v4(),
-          task: 'Learn React'
+          task: 'Learn React',
         },
         {
           id: uuid.v4(),
-          task: 'Do laundry'
-        }
-      ] as NoteModel[]
+          task: 'Do laundry',
+        },
+      ],
     };
   }
 
@@ -30,9 +31,9 @@ class App extends React.Component<any, any> {
         ...this.state.notes,
         {
           id: uuid.v4(),
-          task: 'New Task'
-        } as NoteModel
-      ]
+          task: 'New Task',
+        },
+      ],
     });
   }
 
@@ -40,12 +41,12 @@ class App extends React.Component<any, any> {
   deleteNote(id: string, event: Event) {
     event.stopPropagation();
     this.setState({
-      notes: this.state.notes.filter((note: NoteModel) => note.id !== id)
+      notes: this.state.notes.filter((note: NoteModel) => note.id !== id),
     });
   }
 
   render() {
-    const { notes }: { notes: NoteModel[] } = this.state;
+    const { notes } = this.state;
     return (
       <div>
         <button onClick={this.addNote}>+</button>
