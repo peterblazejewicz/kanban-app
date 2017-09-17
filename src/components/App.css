@@ -1,1 +1,15 @@
 /* app styles */
+
+button {
+    min-width: 4ch;
+    display: inline-block;
+}
+
+.add-note {
+    background-color: #fdf;
+    border: 1px solid #ccc;
+}
+.add-note {
+    background-color: #fdfdfd;
+    border: 1px solid #ccc;
+}

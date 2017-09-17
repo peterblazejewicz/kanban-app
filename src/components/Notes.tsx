@@ -1,3 +1,4 @@
+import './Notes.css';
 import Editable from './Editable';
 import Note from './Note';
 import React from 'react';
@@ -15,16 +16,19 @@ const Notes: React.SFC<NotesInterface> = ({
   onEdit = () => undefined,
   onNoteClick = () => undefined,
 }) => (
-  <ul>
+  <ul className="notes">
     {notes.map(({ id, editing, task }) => (
       <li key={id}>
-        <Note onClick={onNoteClick.bind(null, id)}>
+        <Note className="note" onClick={onNoteClick.bind(null, id)}>
           <Editable
+            className="editable"
             editing={editing}
             value={task}
             onEdit={onEdit.bind(null, id, task)}
           />
-          <button onClick={onDelete.bind(null, id)}>x</button>
+          <button className="delete" onClick={onDelete.bind(null, id)}>
+            x
+          </button>
         </Note>
       </li>
     ))}

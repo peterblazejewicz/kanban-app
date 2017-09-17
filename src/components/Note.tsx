@@ -1,3 +1,4 @@
+import './Note.css';
 import React from 'react';
 
 interface NoteInterface {
@@ -7,6 +8,12 @@ interface NoteInterface {
    * @memberof NoteInterface
    */
   onClick?: React.EventHandler<React.MouseEvent<HTMLElement>>;
+  /**
+   * same as above
+   * @type {string}
+   * @memberof NoteInterface
+   */
+  className?: string;
 }
 
 const Note: React.SFC<NoteInterface> = ({ children, ...props }) => (

@@ -1,22 +1,31 @@
 import autobind from 'autobind-decorator';
+import classnames from 'classnames';
 import React from 'react';
 
 interface EditableInterface {
+  className?: string;
   editing?: boolean;
   value?: string;
   onEdit?: (value: string) => void;
 }
 
 const Editable: React.SFC<EditableInterface> = ({
+  className,
   editing,
   value,
   onEdit = () => undefined,
   ...props,
 }) => {
   if (editing) {
-    return <Edit value={value} onEdit={onEdit} {...props} />;
+    return (
+      <Edit className={className} value={value} onEdit={onEdit} {...props} />
+    );
   }
-  return <span {...props}>{value}</span>;
+  return (
+    <span className={classnames('value', className)} {...props}>
+      {value}
+    </span>
+  );
 };
 
 class Edit extends React.Component<EditableInterface, {}> {
@@ -35,10 +44,11 @@ class Edit extends React.Component<EditableInterface, {}> {
   }
 
   render() {
-    const { value, onEdit, ...props } = this.props;
+    const { className, onEdit, value, ...props } = this.props;
     return (
       <input
         autoFocus={true}
+        className={classnames('edit', className)}
         defaultValue={value}
         onBlur={this.finishEdit}
         onKeyPress={this.checkEnter}
